@@ -10,7 +10,11 @@ struct Index {
   onPageShow() {
     this.timer = setInterval(() => {
       this.time--
-      if (this.time <= 0) this.entry()
+      if (this.time <= 0) {
+        clearInterval(this.timer)
+        this.entry()
+
+      }
     }, 1000)
   }
 

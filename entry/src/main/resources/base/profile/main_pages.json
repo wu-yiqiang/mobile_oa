@@ -1,6 +1,11 @@
 {
   "src": [
     "pages/Index",
-    "pages/Login/Login"
+    "pages/Login/Login",
+    "pages/Home/Home",
+    "pages/Message/Message",
+    "pages/AddressBook/AddressBook",
+    "pages/Work/Work",
+    "pages/My/My"
   ]
 }

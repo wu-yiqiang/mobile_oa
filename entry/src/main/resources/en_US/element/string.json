@@ -3,14 +3,26 @@
     {
       "name": "module_desc",
       "value": "module description"
-    },
-    {
+    }, {
       "name": "EntryAbility_desc",
       "value": "description"
     },
     {
       "name": "EntryAbility_label",
       "value": "label"
-    }
-  ]
+    }, {
+      "name": "work",
+      "value": "Work"
+    },
+    {
+      "name": "message",
+      "value": "Message"
+    }, {
+      "name": "address_book",
+      "value": "AddressBook"
+    },
+    {
+      "name": "my",
+      "value": "My"
+    } ]
 }

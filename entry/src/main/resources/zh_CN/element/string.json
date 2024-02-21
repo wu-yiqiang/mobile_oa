@@ -1,16 +1,23 @@
 {
   "string": [
     {
-      "name": "module_desc",
-      "value": "模块描述"
-    },
-    {
+      "name": "module_desc", "value": "模块描述"
+    }, {
       "name": "EntryAbility_desc",
       "value": "description"
     },
     {
       "name": "EntryAbility_label",
       "value": "label"
-    }
-  ]
-}
+    }, {
+      "name": "work",
+      "value": "办公" },
+    {
+      "name": "message","value": "消息" },
+    {
+      "name": "address_book",
+      "value": "通讯录"
+    }, {
+      "name": "my",
+      "value": "我的" }
+  ] }

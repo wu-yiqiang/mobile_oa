@@ -1,12 +1,20 @@
 import {login} from '../../api/User'
+import PreferencesUtil from '../../utils/PreferencesUtil'
+import router from '@ohos.router'
 @Entry
 @Component
 struct Login {
-  @State loginname: string = '17704051019'
+  @State loginname: string = '13811112222' // 13811112222 13911111111 17704051019
   @State password: string = '123456'
   async onLogin() {
-    const res = await login({loginname: this.loginname, password: this.password})
-    console.log("sss", JSON.stringify(res))
+     router.replaceUrl({  url: 'pages/Home/Home' })
+    // const res = await login({loginname: this.loginname, password: this.password})
+    // if (res.code == 200) {
+    //   console.log("sss", JSON.stringify(res))
+    //     PreferencesUtil.saveToken(res.data.token)
+    //     router.replaceUrl({  url: 'pages/Home/Home' })
+    // }
+
   }
   build() {
     Column() {
