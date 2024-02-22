@@ -26,51 +26,127 @@ export struct Work {
   }
 
   @Builder buildTips() {
-    Row() {
+    Flex({ justifyContent: FlexAlign.SpaceBetween, direction: FlexDirection.Row, alignContent: FlexAlign.Center }) {
       Column() {
         Text("待审批").fontWeight(700).fontColor("#8888cd").fontSize(20)
         Text("15").fontWeight(700).fontColor("#fff").fontSize(18).margin({ top: 5 })
-      }.margin({ left: 5, right: 5 })
+      }.padding(10)
 
       Column() {
         Text("会议提醒").fontWeight(700).fontColor("#8888cd").fontSize(20)
         Text("2").fontWeight(700).fontColor("#fff").fontSize(18).margin({ top: 5 })
-      }.margin({ left: 5, right: 5 })
+      }.padding(10)
 
       Column() {
         Text("周报").fontWeight(700).fontColor("#8888cd").fontSize(20)
         Text("1").fontWeight(700).fontColor("#fff").fontSize(18).margin({ top: 5 })
-      }.margin({ left: 5, right: 5 })
+      }.padding(10)
 
       Column() {
         Text("工作汇报").fontWeight(700).fontColor("#8888cd").fontSize(20)
         Text("5").fontWeight(700).fontColor("#fff").fontSize(18).margin({ top: 5 })
-      }.margin({ left: 5, right: 5 })
+      }.padding(10)
+
     }
     .backgroundColor('#4749a1')
     .width("100%")
-    .justifyContent(FlexAlign.Center)
-    .alignItems(VerticalAlign.Top)
     .height(200)
-    .padding({ top: 10 })
+    .padding({ top: 10, right: 20, left: 20 })
   }
 
   @Builder buildAppManagement() {
-    Row() {
-      Column() {
-        Text("s事实上事实上收拾收事事实上实萨达萨达上拾d")
-        Column()
-      }
+    Column() {
+      Stack({ alignContent: Alignment.TopStart }) {
+        Column() {
+          Column() {
+            Flex({ justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
+              Row() {
+                Image($rawfile('work/menu.png')).width(24).objectFit(ImageFit.Fill)
+                Text("应用管理").fontColor(Color.Black).fontSize(20).fontWeight(700)
+              }
 
-      Column() {
-        Text("sdss")
+              Row() {
+                Text("自定义").fontColor(Color.Gray).fontSize(16)
+                Text(" > ").fontColor(Color.Gray).fontSize(16)
+              }
+            }.padding(10)
+          }.borderColor({ bottom: Color.Gray }).borderWidth({ bottom: "1vp" })
+
+
+          Grid() {
+            GridItem() { // 子组件只能是GirdItem
+              Column() {
+                Image($rawfile("work/process.png")).width(32).objectFit(ImageFit.Fill)
+                Text("请假申请").fontWeight(700).fontSize(16).fontColor(Color.Black).margin(5)
+              }
+            }
+
+            GridItem() { // 子组件只能是GirdItem
+              Column() {
+                Image($rawfile("work/clock.png")).width(32).objectFit(ImageFit.Fill)
+                Text("考勤打卡").fontWeight(700).fontSize(16).fontColor(Color.Black).margin(5)
+              }
+            }
+
+            GridItem() { // 子组件只能是GirdItem
+              Column() {
+                Image($rawfile("work/report.png")).width(32).objectFit(ImageFit.Fill)
+                Text("汇报").fontWeight(700).fontSize(16).fontColor(Color.Black).margin(5)
+              }
+            }
+
+            GridItem() { // 子组件只能是GirdItem
+              Column() {
+                Image($rawfile("work/approve.png")).width(32).objectFit(ImageFit.Fill)
+                Text("OA审批").fontWeight(700).fontSize(16).fontColor(Color.Black).margin(5)
+              }
+            }
+
+            GridItem() { // 子组件只能是GirdItem
+              Column() {
+                Image($rawfile("work/card.png")).width(32).objectFit(ImageFit.Fill)
+                Text("补卡申请").fontWeight(700).fontSize(16).fontColor(Color.Black).margin(5)
+              }
+            }
+
+            GridItem() { // 子组件只能是GirdItem
+              Column() {
+                Image($rawfile("work/salary.png")).width(32).objectFit(ImageFit.Fill)
+                Text("工资单").fontWeight(700).fontSize(16).fontColor(Color.Black).margin(5)
+              }
+            }
+
+            GridItem() { // 子组件只能是GirdItem
+              Column() {
+                Image($rawfile("work/notice.png")).width(32).objectFit(ImageFit.Fill)
+                Text("公司公告").fontWeight(700).fontSize(16).fontColor(Color.Black).margin(5)
+              }
+            }
+
+            GridItem() { // 子组件只能是GirdItem
+              Column() {
+                Image($rawfile("work/rule.png")).width(32).objectFit(ImageFit.Fill)
+                Text("规章制度").fontWeight(700).fontSize(16).fontColor(Color.Black).margin(5)
+              }
+            }
+
+          }
+          .columnsTemplate("1fr 1fr 1fr 1fr") // 设置Grid为3列，并且均分
+          .width('100%')
+          .height(150)
+          .columnsGap(10) // 设置列间距为10vp
+          .padding(10)
+          .rowsGap(10) // 设置行间距为10vp
+        }
+
       }
-    }
-    .margin({ top: -100 })
-    .backgroundColor(Color.White)
-    .height(300)
-    .borderRadius(8)
-    .padding(10)
+      .width("100%")
+      // .height(300)
+      .margin({ top: -100 })
+      .backgroundColor(Color.White)
+      .borderRadius(8)
+    }.padding(14)
+
   }
 
   @Builder buildApplyFor() {
