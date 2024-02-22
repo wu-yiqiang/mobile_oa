@@ -145,19 +145,131 @@ export struct Work {
       .margin({ top: -100 })
       .backgroundColor(Color.White)
       .borderRadius(8)
-    }.padding(14)
+    }.padding(14).margin({ bottom: 10 })
 
   }
 
   @Builder buildApplyFor() {
-    Flex({ justifyContent: FlexAlign.SpaceBetween }) {
-      Column() {
-        Text("s事实上事实上收拾收事事实上实萨达萨达上拾d")
-      }
+    Column() {
+      Stack({ alignContent: Alignment.TopStart }) {
+        Column() {
+          Column() {
+            Flex({ justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
+              Row() {
+                Image($rawfile('work/badge.png')).width(24).objectFit(ImageFit.Fill)
+                Text("我的申请").fontColor(Color.Black).fontSize(20).fontWeight(700)
+              }
 
-      Column() {
-        Text("sdss")
-      }
+              Row() {
+                Text("更多").fontColor(Color.Gray).fontSize(16)
+                Text(" > ").fontColor(Color.Gray).fontSize(16)
+              }
+            }.padding(10)
+          }.borderColor({ bottom: Color.Gray }).borderWidth({ bottom: "1vp" })
+
+          Stack({ alignContent: Alignment.TopStart }) {
+            Column() {
+              Circle()
+                .width(20)
+                .height(20).fill(Color.Green).borderRadius(10)
+            }.margin({ right: 5 })
+
+            Column() {
+              Text("请假申请").fontSize(22).fontWeight(700)
+              Text("2020-09-12 ~ 2021-08-12").fontSize(18).margin({ top: 10, bottom: 10 })
+              Flex({ justifyContent: FlexAlign.SpaceBetween }) {
+                Text("申请时间：2020-09-11 12:00").fontSize(18)
+                Text("待审批").fontSize(16).fontColor(Color.Red)
+              }
+            }
+
+          }.padding(10)
+
+        }
+        .width("100%")
+        .backgroundColor(Color.White)
+        .borderRadius(8).margin({ bottom: 2 })
+      }.padding(14).margin({ bottom: 10 })
+
+      Stack({ alignContent: Alignment.TopStart }) {
+        Column() {
+          Column() {
+            Flex({ justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
+              Row() {
+                Image($rawfile('work/badge.png')).width(24).objectFit(ImageFit.Fill)
+                Text("我的申请").fontColor(Color.Black).fontSize(20).fontWeight(700)
+              }
+
+              Row() {
+                Text("更多").fontColor(Color.Gray).fontSize(16)
+                Text(" > ").fontColor(Color.Gray).fontSize(16)
+              }
+            }.padding(10)
+          }.borderColor({ bottom: Color.Gray }).borderWidth({ bottom: "1vp" })
+
+          Stack({ alignContent: Alignment.TopStart }) {
+            Column() {
+              Circle()
+                .width(20)
+                .height(20).fill(Color.Green).borderRadius(10)
+            }.margin({ right: 5 })
+
+            Column() {
+              Text("请假申请").fontSize(22).fontWeight(700)
+              Text("2020-09-12 ~ 2021-08-12").fontSize(18).margin({ top: 10, bottom: 10 })
+              Flex({ justifyContent: FlexAlign.SpaceBetween }) {
+                Text("申请时间：2020-09-11 12:00").fontSize(18)
+                Text("待审批").fontSize(16).fontColor(Color.Red)
+              }
+            }
+
+          }.padding(10)
+
+        }
+        .width("100%")
+        .backgroundColor(Color.White)
+        .borderRadius(8).margin({ bottom: 2 })
+      }.padding(14).margin({ bottom: 10 })
+
+      Stack({ alignContent: Alignment.TopStart }) {
+        Column() {
+          Column() {
+            Flex({ justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
+              Row() {
+                Image($rawfile('work/badge.png')).width(24).objectFit(ImageFit.Fill)
+                Text("我的申请").fontColor(Color.Black).fontSize(20).fontWeight(700)
+              }
+
+              Row() {
+                Text("更多").fontColor(Color.Gray).fontSize(16)
+                Text(" > ").fontColor(Color.Gray).fontSize(16)
+              }
+            }.padding(10)
+          }.borderColor({ bottom: Color.Gray }).borderWidth({ bottom: "1vp" })
+
+          Stack({ alignContent: Alignment.TopStart }) {
+            Column() {
+              Circle()
+                .width(20)
+                .height(20).fill(Color.Green).borderRadius(10)
+            }.margin({ right: 5 })
+
+            Column() {
+              Text("请假申请").fontSize(22).fontWeight(700)
+              Text("2020-09-12 ~ 2021-08-12").fontSize(18).margin({ top: 10, bottom: 10 })
+              Flex({ justifyContent: FlexAlign.SpaceBetween }) {
+                Text("申请时间：2020-09-11 12:00").fontSize(18)
+                Text("待审批").fontSize(16).fontColor(Color.Red)
+              }
+            }
+
+          }.padding(10)
+
+        }
+        .width("100%")
+        .backgroundColor(Color.White)
+        .borderRadius(8).margin({ bottom: 2 })
+      }.padding(14).margin({ bottom: 10 })
     }
   }
 
@@ -180,5 +292,3 @@ export struct Work {
     .backgroundColor('#f5f5f5')
   }
 }
-
-

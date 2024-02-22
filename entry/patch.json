@@ -1,7 +1,7 @@
 {
   "app": {
     "bundleName": "com.example.mobile_oa",
-    "patchVersionCode": 2000148,
+    "patchVersionCode": 2000194,
     "versionCode": 1000000
   },
   "module": {
