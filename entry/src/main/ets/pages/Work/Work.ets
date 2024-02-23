@@ -1,7 +1,21 @@
+import router from '@ohos.router'
+
 @Entry
 @Component
 export struct Work {
   @State message: string = 'work'
+
+  GotoDetail() {
+    router.pushUrl({
+      url: "pages/Work/Details"
+    })
+  }
+
+  GotoMyWork() {
+    router.pushUrl({
+      url: "pages/Work/MyWork"
+    })
+  }
 
   @Builder buildTop() {
     Flex({ direction: FlexDirection.Row, justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
@@ -163,7 +177,9 @@ export struct Work {
               Row() {
                 Text("更多").fontColor(Color.Gray).fontSize(16)
                 Text(" > ").fontColor(Color.Gray).fontSize(16)
-              }
+              }.onClick(() => {
+                this.GotoMyWork()
+              })
             }.padding(10)
           }.borderColor({ bottom: Color.Gray }).borderWidth({ bottom: "1vp" })
 
@@ -172,7 +188,7 @@ export struct Work {
               Circle()
                 .width(20)
                 .height(20).fill(Color.Green).borderRadius(10)
-            }.margin({ right: 5 })
+            }
 
             Column() {
               Text("请假申请").fontSize(22).fontWeight(700)
@@ -181,15 +197,17 @@ export struct Work {
                 Text("申请时间：2020-09-11 12:00").fontSize(18)
                 Text("待审批").fontSize(16).fontColor(Color.Red)
               }
-            }
+            }.alignItems(HorizontalAlign.Start).margin({ left: 40 })
 
           }.padding(10)
 
         }
         .width("100%")
         .backgroundColor(Color.White)
-        .borderRadius(8).margin({ bottom: 2 })
-      }.padding(14).margin({ bottom: 10 })
+        .borderRadius(8)
+      }.padding(14).onClick(() => {
+        this.GotoDetail()
+      })
 
       Stack({ alignContent: Alignment.TopStart }) {
         Column() {
@@ -203,7 +221,9 @@ export struct Work {
               Row() {
                 Text("更多").fontColor(Color.Gray).fontSize(16)
                 Text(" > ").fontColor(Color.Gray).fontSize(16)
-              }
+              }.onClick(() => {
+                this.GotoMyWork()
+              })
             }.padding(10)
           }.borderColor({ bottom: Color.Gray }).borderWidth({ bottom: "1vp" })
 
@@ -221,15 +241,17 @@ export struct Work {
                 Text("申请时间：2020-09-11 12:00").fontSize(18)
                 Text("待审批").fontSize(16).fontColor(Color.Red)
               }
-            }
+            }.alignItems(HorizontalAlign.Start).margin({ left: 40 })
 
-          }.padding(10)
+          }.padding(10).onClick(() => {
+            this.GotoDetail()
+          })
 
         }
         .width("100%")
         .backgroundColor(Color.White)
-        .borderRadius(8).margin({ bottom: 2 })
-      }.padding(14).margin({ bottom: 10 })
+        .borderRadius(8)
+      }.padding(14)
 
       Stack({ alignContent: Alignment.TopStart }) {
         Column() {
@@ -243,7 +265,9 @@ export struct Work {
               Row() {
                 Text("更多").fontColor(Color.Gray).fontSize(16)
                 Text(" > ").fontColor(Color.Gray).fontSize(16)
-              }
+              }.onClick(() => {
+                this.GotoMyWork()
+              })
             }.padding(10)
           }.borderColor({ bottom: Color.Gray }).borderWidth({ bottom: "1vp" })
 
@@ -261,15 +285,17 @@ export struct Work {
                 Text("申请时间：2020-09-11 12:00").fontSize(18)
                 Text("待审批").fontSize(16).fontColor(Color.Red)
               }
-            }
+            }.alignItems(HorizontalAlign.Start).margin({ left: 40 })
 
           }.padding(10)
 
         }
         .width("100%")
         .backgroundColor(Color.White)
-        .borderRadius(8).margin({ bottom: 2 })
-      }.padding(14).margin({ bottom: 10 })
+        .borderRadius(8)
+      }.padding(14).onClick(() => {
+        this.GotoDetail()
+      })
     }
   }
 

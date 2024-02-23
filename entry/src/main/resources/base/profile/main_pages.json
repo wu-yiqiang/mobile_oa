@@ -6,6 +6,8 @@
     "pages/Message/Message",
     "pages/AddressBook/AddressBook",
     "pages/Work/Work",
-    "pages/My/My"
+    "pages/My/My",
+    "pages/Work/Details",
+    "pages/Work/MyWork"
   ]
 }
