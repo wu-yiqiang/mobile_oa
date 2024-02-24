@@ -12,11 +12,10 @@ export default struct TimeLine {
           .width(4)
           .height(60)
           .backgroundColor("#d0d0ff")
-          .borderRadius(6)
-      }
+      }.margin({ right: 10 })
 
       this.info()
-    }.height(80)
+    }
 
   }
 
@@ -27,14 +26,12 @@ export default struct TimeLine {
           .width(4)
           .height(32)
           .backgroundColor("#d0d0ff")
-          .borderRadius(6)
           .margin({ bottom: -2 })
         Circle().width(20).height(20).fill("#d0d0ff")
         Line()
           .width(4)
           .height(32)
           .backgroundColor("#d0d0ff")
-          .borderRadius(6)
           .margin({ top: -2 })
       }
 
@@ -44,19 +41,23 @@ export default struct TimeLine {
   }
 
   @Builder end() {
-    Stack({ alignContent: Alignment.Bottom }) {
+    Stack({ alignContent: Alignment.TopStart }) {
       Column() {
+        Line()
+          .width(4)
+          .height(60)
+          .backgroundColor("#d0d0ff")
         Circle().width(20).height(20).fill("#d0d0ff")
-      }
+      }.margin({ right: 10 })
 
-      this.endiInfo()
+      this.baseInfo()
     }.height(80)
   }
 
-  @Builder endiInfo() {
+  @Builder baseInfo() {
     Row() {
       Flex({ justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center }) {
-        Column() {
+        Flex({ justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Start, direction: FlexDirection.Column }) {
           Row() {
             Text("张茜茜").fontWeight(700).fontSize(20).margin({ right: 20 })
             Text("发起人").padding(5).backgroundColor(Color.Pink).fontSize(16).borderRadius(4)
@@ -65,20 +66,19 @@ export default struct TimeLine {
           Row() {
             Text("已审批").fontSize(18).fontColor(Color.Gray)
           }.justifyContent(FlexAlign.Start)
-
         }
 
         Column() {
           Text("2022-12-07 15:00").fontSize(16)
         }
       }
-    }
+    }.margin({ left: 30 })
   }
 
   @Builder info() {
     Row() {
       Flex({ justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center }) {
-        Column() {
+        Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Start, direction: FlexDirection.Column }) {
           Row() {
             Text("张茜茜").fontWeight(700).fontSize(20).margin({ right: 20 })
             Text("发起人").padding(5).backgroundColor(Color.Pink).fontSize(16).borderRadius(4)
@@ -87,14 +87,13 @@ export default struct TimeLine {
           Row() {
             Text("已审批").fontSize(18).fontColor(Color.Gray)
           }.justifyContent(FlexAlign.Start)
-
         }
 
         Column() {
           Text("2022-12-07 15:00").fontSize(16)
         }
       }
-    }.borderWidth({ bottom: 1 }).borderColor(Color.Gray).margin({ left: 30 })
+    }.borderWidth({ bottom: 1 }).borderColor(Color.Gray).height(80).margin({ left: 30 })
   }
 
   build() {
@@ -102,6 +101,6 @@ export default struct TimeLine {
       this.start()
       this.middle()
       this.end()
-    }.backgroundColor(Color.Blue)
+    }
   }
 }
