@@ -4,6 +4,29 @@ import router from '@ohos.router'
 @Component
 export struct Work {
   @State message: string = 'work'
+  @State myWorkLists: Array<Object> = [
+    {
+      number: "1",
+      startTime: "2022-09-11",
+      endTime: "2022-09-15",
+      state: "待审批",
+      updateTime: "2022-09-12 12:00"
+    },
+    {
+      number: "2",
+      startTime: "2022-09-11",
+      endTime: "2022-09-15",
+      state: "待审批",
+      updateTime: "2022-09-12 12:00"
+    },
+    {
+      number: "3",
+      startTime: "2022-09-11",
+      endTime: "2022-09-15",
+      state: "待审批",
+      updateTime: "2022-09-12 12:00"
+    },
+  ]
 
   GotoDetail() {
     router.pushUrl({
@@ -159,142 +182,58 @@ export struct Work {
       .margin({ top: -100 })
       .backgroundColor(Color.White)
       .borderRadius(8)
-    }.padding(14).margin({ bottom: 10 })
+    }.padding(14)
 
   }
 
   @Builder buildApplyFor() {
     Column() {
-      Stack({ alignContent: Alignment.TopStart }) {
-        Column() {
+
+
+      ForEach(this.myWorkLists, (item: any, index?: number) => {
+        Stack({ alignContent: Alignment.TopStart }) {
           Column() {
-            Flex({ justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
-              Row() {
-                Image($rawfile('work/badge.png')).width(24).objectFit(ImageFit.Fill)
-                Text("我的申请").fontColor(Color.Black).fontSize(20).fontWeight(700)
+            Column() {
+              Flex({ justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
+                Row() {
+                  Image($rawfile('work/badge.png')).width(24).objectFit(ImageFit.Fill)
+                  Text("我的申请").fontColor(Color.Black).fontSize(20).fontWeight(700)
+                }
+
+                Row() {
+                  Text("更多").fontColor(Color.Gray).fontSize(16)
+                  Text(" > ").fontColor(Color.Gray).fontSize(16)
+                }.onClick(() => {
+                  this.GotoMyWork()
+                })
+              }.padding(10)
+            }.borderColor({ bottom: Color.Gray }).borderWidth({ bottom: "1vp" })
+
+            Stack({ alignContent: Alignment.TopStart }) {
+              Column() {
+                Circle()
+                  .width(20)
+                  .height(20).fill(Color.Green).borderRadius(10)
               }
 
-              Row() {
-                Text("更多").fontColor(Color.Gray).fontSize(16)
-                Text(" > ").fontColor(Color.Gray).fontSize(16)
-              }.onClick(() => {
-                this.GotoMyWork()
-              })
+              Column() {
+                Text("请假申请").fontSize(22).fontWeight(700)
+                Text(`${item.startTime} ~ ${item.endTime}`).fontSize(18).margin({ top: 10, bottom: 10 })
+                Flex({ justifyContent: FlexAlign.SpaceBetween }) {
+                  Text(`申请时间：${item.updateTime}`).fontSize(18)
+                  Text("待审批").fontSize(16).fontColor(Color.Red)
+                }
+              }.alignItems(HorizontalAlign.Start).margin({ left: 40 })
+
             }.padding(10)
-          }.borderColor({ bottom: Color.Gray }).borderWidth({ bottom: "1vp" })
 
-          Stack({ alignContent: Alignment.TopStart }) {
-            Column() {
-              Circle()
-                .width(20)
-                .height(20).fill(Color.Green).borderRadius(10)
-            }
-
-            Column() {
-              Text("请假申请").fontSize(22).fontWeight(700)
-              Text("2020-09-12 ~ 2021-08-12").fontSize(18).margin({ top: 10, bottom: 10 })
-              Flex({ justifyContent: FlexAlign.SpaceBetween }) {
-                Text("申请时间：2020-09-11 12:00").fontSize(18)
-                Text("待审批").fontSize(16).fontColor(Color.Red)
-              }
-            }.alignItems(HorizontalAlign.Start).margin({ left: 40 })
-
-          }.padding(10)
-
-        }
-        .width("100%")
-        .backgroundColor(Color.White)
-        .borderRadius(8)
-      }.padding(14).onClick(() => {
-        this.GotoDetail()
-      })
-
-      Stack({ alignContent: Alignment.TopStart }) {
-        Column() {
-          Column() {
-            Flex({ justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
-              Row() {
-                Image($rawfile('work/badge.png')).width(24).objectFit(ImageFit.Fill)
-                Text("我的申请").fontColor(Color.Black).fontSize(20).fontWeight(700)
-              }
-
-              Row() {
-                Text("更多").fontColor(Color.Gray).fontSize(16)
-                Text(" > ").fontColor(Color.Gray).fontSize(16)
-              }.onClick(() => {
-                this.GotoMyWork()
-              })
-            }.padding(10)
-          }.borderColor({ bottom: Color.Gray }).borderWidth({ bottom: "1vp" })
-
-          Stack({ alignContent: Alignment.TopStart }) {
-            Column() {
-              Circle()
-                .width(20)
-                .height(20).fill(Color.Green).borderRadius(10)
-            }.margin({ right: 5 })
-
-            Column() {
-              Text("请假申请").fontSize(22).fontWeight(700)
-              Text("2020-09-12 ~ 2021-08-12").fontSize(18).margin({ top: 10, bottom: 10 })
-              Flex({ justifyContent: FlexAlign.SpaceBetween }) {
-                Text("申请时间：2020-09-11 12:00").fontSize(18)
-                Text("待审批").fontSize(16).fontColor(Color.Red)
-              }
-            }.alignItems(HorizontalAlign.Start).margin({ left: 40 })
-
-          }.padding(10).onClick(() => {
-            this.GotoDetail()
-          })
-
-        }
-        .width("100%")
-        .backgroundColor(Color.White)
-        .borderRadius(8)
-      }.padding(14)
-
-      Stack({ alignContent: Alignment.TopStart }) {
-        Column() {
-          Column() {
-            Flex({ justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
-              Row() {
-                Image($rawfile('work/badge.png')).width(24).objectFit(ImageFit.Fill)
-                Text("我的申请").fontColor(Color.Black).fontSize(20).fontWeight(700)
-              }
-
-              Row() {
-                Text("更多").fontColor(Color.Gray).fontSize(16)
-                Text(" > ").fontColor(Color.Gray).fontSize(16)
-              }.onClick(() => {
-                this.GotoMyWork()
-              })
-            }.padding(10)
-          }.borderColor({ bottom: Color.Gray }).borderWidth({ bottom: "1vp" })
-
-          Stack({ alignContent: Alignment.TopStart }) {
-            Column() {
-              Circle()
-                .width(20)
-                .height(20).fill(Color.Green).borderRadius(10)
-            }.margin({ right: 5 })
-
-            Column() {
-              Text("请假申请").fontSize(22).fontWeight(700)
-              Text("2020-09-12 ~ 2021-08-12").fontSize(18).margin({ top: 10, bottom: 10 })
-              Flex({ justifyContent: FlexAlign.SpaceBetween }) {
-                Text("申请时间：2020-09-11 12:00").fontSize(18)
-                Text("待审批").fontSize(16).fontColor(Color.Red)
-              }
-            }.alignItems(HorizontalAlign.Start).margin({ left: 40 })
-
-          }.padding(10)
-
-        }
-        .width("100%")
-        .backgroundColor(Color.White)
-        .borderRadius(8)
-      }.padding(14).onClick(() => {
-        this.GotoDetail()
+          }
+          .width("100%")
+          .backgroundColor(Color.White)
+          .borderRadius(8)
+        }.padding(14).onClick(() => {
+          this.GotoDetail()
+        })
       })
     }
   }
