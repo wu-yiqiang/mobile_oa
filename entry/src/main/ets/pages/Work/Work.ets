@@ -40,6 +40,12 @@ export struct Work {
     })
   }
 
+  GotoWeather() {
+    router.pushUrl({
+      url: "pages/Weather/Weather"
+    })
+  }
+
   @Builder buildTop() {
     Flex({ direction: FlexDirection.Row, justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
       Text("我的办公").fontColor(Color.White).fontSize(30).fontWeight(700)
@@ -52,7 +58,9 @@ export struct Work {
         Column() {
           Image($rawfile("work/weather.png")).height(60).objectFit(ImageFit.Fill)
         }
-      }
+      }.onClick(() => {
+        this.GotoWeather()
+      })
     }
     .height('100vp')
     .width('100%')
@@ -178,7 +186,6 @@ export struct Work {
 
       }
       .width("100%")
-      // .height(300)
       .margin({ top: -100 })
       .backgroundColor(Color.White)
       .borderRadius(8)
@@ -188,7 +195,6 @@ export struct Work {
 
   @Builder buildApplyFor() {
     Column() {
-
 
       ForEach(this.myWorkLists, (item: any, index?: number) => {
         Stack({ alignContent: Alignment.TopStart }) {

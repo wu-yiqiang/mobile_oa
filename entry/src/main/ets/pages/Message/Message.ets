@@ -1,17 +1,14 @@
+import TopBar from '../Components/TopBar'
+import Tab from '../Components/Tab'
+
 @Entry
 @Component
 export struct Message {
-  @State message: string = 'message'
-
   build() {
-    Row() {
-      Column() {
-        Text(this.message)
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-      }
-      .width('100%')
+    Column() {
+      TopBar({ title: "消息" })
+      Tab()
     }
-    .height('100%')
+    .height('100%').backgroundColor("#f5f5f5")
   }
 }
