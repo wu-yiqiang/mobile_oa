@@ -3,7 +3,7 @@ import router from '@ohos.router'
 @Component
 export default struct NavBar {
   // ? 表示可省略传参
-  private Title?: string
+  private title?: string
 
   goBack() {
     router.back()
@@ -15,7 +15,7 @@ export default struct NavBar {
         Text("<").fontWeight(700).fontSize(24).onClick(() => {
           this.goBack()
         })
-        Text(this.Title)
+        Text(this.title)
           .fontSize(24)
           .fontWeight(700)
         Text(" ")

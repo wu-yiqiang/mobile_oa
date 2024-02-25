@@ -9,6 +9,7 @@
     "pages/My/My",
     "pages/Work/Details",
     "pages/Work/MyWork",
-    "pages/Weather/Weather"
+    "pages/Weather/Weather",
+    "pages/Message/Chat"
   ]
 }

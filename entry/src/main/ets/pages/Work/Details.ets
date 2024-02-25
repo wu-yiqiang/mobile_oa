@@ -40,7 +40,7 @@ struct Details {
 
   build() {
     Column() {
-      NavBar({ Title: "请假申请详情" })
+      NavBar({ title: "请假申请详情" })
 
       Column() {
 
