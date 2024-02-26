@@ -55,12 +55,12 @@ export struct Work {
           Text("12月8日").fontColor(Color.White).fontSize(22)
         }
 
-        Column() {
+        Row() {
           Image($rawfile("work/weather.png")).height(60).objectFit(ImageFit.Fill)
-        }
-      }.onClick(() => {
-        this.GotoWeather()
-      })
+        }.onClick(() => {
+          this.GotoWeather()
+        })
+      }
     }
     .height('100vp')
     .width('100%')
@@ -204,7 +204,9 @@ export struct Work {
                 Row() {
                   Image($rawfile('work/badge.png')).width(24).objectFit(ImageFit.Fill)
                   Text("我的申请").fontColor(Color.Black).fontSize(20).fontWeight(700)
-                }
+                }.onClick(() => {
+                  this.GotoWeather()
+                })
 
                 Row() {
                   Text("更多").fontColor(Color.Gray).fontSize(16)

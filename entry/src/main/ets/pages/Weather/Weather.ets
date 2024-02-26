@@ -74,10 +74,10 @@ struct Weathers {
     Column() {
       Row() {
         Flex({ direction: FlexDirection.Row, justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
-          Image($rawfile("weather/logo.jpg")).height("100%")
+          Image($rawfile("weather/logo.jpg")).height(55)
           Radios()
-        }.height("100%")
-      }.width("100%").height(70).backgroundColor("rgb(29,40,50)").padding(10)
+        }
+      }.width("100%").backgroundColor("rgb(29,40,50)").padding({ left: 10, right: 10 })
 
       Row() {
         Scroll() {
@@ -189,7 +189,7 @@ struct Weathers {
       .width('100%')
       .padding({ bottom: 60 })
       .backgroundImage($rawfile("weather/CloudyNight.png"))
-      .backgroundImageSize({ width: "100%" })
+      .backgroundImageSize({ width: "100%", height: "100%" })
 
     }.width("100%")
   }
