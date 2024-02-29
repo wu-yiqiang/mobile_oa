@@ -1,6 +1,7 @@
 export interface Message {
   id?: string
-  media_type: 'time' | 'text' | 'image' | 'video' content: string
+  media_type: 'time' | 'text' | 'image' | 'video'
+  content: string
   is_sender?: boolean
   created_at?: string | object
   nickname?: string // 发送消息人昵称

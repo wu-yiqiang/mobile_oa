@@ -6,17 +6,37 @@ import picker from '@ohos.file.picker'
 @Entry
 @Component
 struct Chat {
-  @State friendName: string = "张三"
-  @State textFocusable: boolean = true @State friendName: string = "张一山" @State messageList: Message[] = [] @State isSendMedia: boolean = false @State sendContent: string = ''
+  @State textFocusable: boolean = true;
+  @State friendName: string = "张一山";
+  @State messageList: Message[] = [];
+  @State isSendMedia: boolean = false;
+  @State sendContent: string = ''
+  private ws = null
+  room = "30908286-466b-485e-b673-332db053bd18"
+  listScroller: Scroller = new Scroller()
   aboutToAppear() {
     this.messageList = [
       {
         id: '1001',
-        media_type: 'time', content: '18:17', is_sender: false, created_at: '18:17', nickname: '张一山', status: 2,
-        room: "10001", receiver_id: "111222333", sender_id: "111222333", type: "",
+        media_type: 'time',
+        content: '18:17',
+        is_sender: false,
+        created_at: '18:17',
+        nickname: '张一山',
+        status: 2,
+        room: "10001",
+        receiver_id: "111222333",
+        sender_id: "111222333",
+        type: "",
         avatar: "",
       }, {
-      id: '1002', media_type: 'text', is_sender: false, content: '工作进度怎样', created_at: '18:17', nickname: '张一山', status: 2,
+      id: '1002',
+      media_type: 'text',
+      is_sender: false,
+      content: '工作进度怎样',
+      created_at: '18:17',
+      nickname: '张一山',
+      status: 2,
       room: "10001",
       receiver_id: "111222333",
       sender_id: "111222333",
@@ -24,17 +44,69 @@ struct Chat {
       avatar: "",
     }, {
       id: '1003',
-      media_type: 'text', is_sender: true,
-      content: '你好!', created_at: '18:17', nickname: '黄永玉', status: 2,
-      room: "10001", receiver_id: "111222333", sender_id: "111222333", type: "",
-      avatar: "",
-      id: '1004',
-      media_type: 'text', is_sender: true,
-      content: '整体进度20%了', created_at: '18:17', nickname: '黄永玉', status: 1,
-      room: "10001", receiver_id: "111222333", sender_id: "111222333", type: "",
-      avatar: "",
-    } ]
+      media_type: 'text',
+      is_sender: true,
+      content: '你好!',
+      created_at: '18:17',
+      nickname: '黄永玉',
+      status: 2,
+      room: "10001",
+      receiver_id: "111222333",
+      sender_id: "111222333",
+      type: "",
+      avatar: ""
+    },
+      {
+        id: '1004',
+        media_type: 'text',
+        is_sender: true,
+        content: '整体进度20%了',
+        created_at: '18:17',
+        nickname: '黄永玉',
+        status: 1,
+        room: "10001",
+        receiver_id: "111222333",
+        sender_id: "111222333",
+        type: "",
+        avatar: "",
+      }]
   }
+
+
+  // 发送文本消息
+  sendTextMessage() {
+    this.textFocusable = false
+    setTimeout(() => {
+      this.textFocusable = true
+    }, 200)
+    if (this.sendContent.trim().length === 0) {
+      return promptAction.showToast({
+        message: "消息不能为空", duration: 800,
+        bottom: 100
+      })
+    }
+    const message: Message = {
+      content: this.sendContent,
+      media_type: "text",
+      receiver_id: "user_da8add51-4bcc-4d82-a4c3-dcd7a44b527b",
+      room: "30908286-466b-485e-b673-332db053bd18",
+      sender_id: "user_b7d8955c-8339-458e-a13b-461b1271e5d4",
+      is_sender: true,
+      status: 1,
+      type: "private",
+      avatar: "https://img2.baidu.com/it/u=1477138556,2382360194&fm=253&fmt=auto&app=138&f=JPEG?w=400&h=400",
+      nickname: "张三",
+      created_at: new Date(),
+    }
+    // 发送给服务器
+    this.ws.send(JSON.stringify(message))
+    // 清空输入框中的内容
+    this.sendContent = ''
+    setTimeout(() => {
+      this.listScroller.scrollToIndex(this.messageList.length - 1)
+    }, 200)
+  }
+
   @Builder buildMessageTime(message: Message) {
     Row() {
       Text(message.content)
@@ -199,6 +271,7 @@ struct Chat {
       bottom: this.isSendMedia ? 240 : 120
     })
   }
+
   @Builder buildFooter() {
     Column() {
       // 输入框部分
@@ -222,17 +295,18 @@ struct Chat {
           .onChange(value => {
             this.sendContent = value
           })
-        if (this.sendContent.trim().length > 0) { Button("发送")
-          .backgroundColor('#4749a1')
-          .fontColor(Color.White)
-          .margin({
-            left: 10 })
-          .type(ButtonType.Normal)
-          .borderRadius(5)
-          .focusOnTouch(true)
-          .onClick(() => {
-            this.sendTextMessage()
-          })
+        if (this.sendContent.trim().length > 0) {
+          Button("发送")
+            .backgroundColor('#4749a1')
+            .fontColor(Color.White)
+            .margin({
+              left: 10 })
+            .type(ButtonType.Normal)
+            .borderRadius(5)
+            .focusOnTouch(true)
+            .onClick(() => {
+              this.sendTextMessage()
+            })
         } else {
           Image($rawfile("message/smile1.png"))
             .width(46)
@@ -267,33 +341,38 @@ struct Chat {
       .padding(10)
       .width('100%')
       .backgroundColor(Color.White)
+
       if (this.isSendMedia) {
         Row() {
           Column() {
-          Image($rawfile("message/image1.png"))
-.width(46)
-.height(38) Text('图片') .margin({
-top: 5 })
-            .fontColor('#101010')
-            .fontSize(18)
-        }
+            Image($rawfile("message/image1.png"))
+              .width(46)
+              .height(38)
+            Text('图片').margin({
+              top: 5 })
+              .fontColor('#101010')
+              .fontSize(18)
+          }
           .margin({ left: 20 })
+
           Column() {
-          Image($rawfile("message/photo1.png"))
-.width(46)
-.height(38)
-            Text('视频') .margin({
-top: 5 })
-            .fontColor('#101010')
-            .fontSize(18)
-        }
+            Image($rawfile("message/photo1.png"))
+              .width(46)
+              .height(38)
+            Text('视频').margin({
+              top: 5 })
+              .fontColor('#101010')
+              .fontSize(18)
+          }
           .margin({ left: 30 })
         }
         .backgroundColor(Color.White)
         .width('100%')
         .height(120)
-      } }
+      }
+    }
   }
+
   build() {
     Stack() {
       Column() {
